@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 14: expected statement.
-    personaje = True
-              ^
-
-File "game/script.rpy", line 16: expected statement.
-    personaje = False
-              ^
+File "game/script.rpy", line 84: Line is indented, but the preceding say menuitem statement does not expect a block. Please check this line's indentation.
+    $ humano_confiado +=1
+    ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Tue Feb 16 20:14:49 2021
+Wed Feb 17 18:19:08 2021
