@@ -1,9 +1,14 @@
-image intro = "final.png"
+image calle = "calle.jpg"
+image servicio = "servicio_secreto.jpg"
+image mani1 = "mani1.jpg"
+image mani2 = "mani2.jpg"
+image tertulia = "tertulia.jpg"
 image sala1 = "bar.png"
-define d = Character("Federico")
 image fedec1 = "FedeSala1Cerrados.png"
 image fedeb1 = "FedeSala1Bajados.png"
+image tertulia = "tertulia.jpg"
 
+define d = Character("Federico")
 
 label start:
     $ androide_confiado = 0
@@ -11,23 +16,31 @@ label start:
     $ androide_sospechoso = 0
     $ humano_confiado = 0
     $ personaje = True
-    scene intro
-    #foto servicio secreto alarmados:
 
+    #Foto calle transitada
+    scene calle
+    "Es el año 2632. Los androides son una parte esencial de la sociedad."
+    #Foto professions
+    "Forman parte de tareas como construcción, transporte, tareas del hogar. Pero sólo son vistos como herramientas sin ningún prospecto de que eso cambie."
+
+    #foto servicio secreto alarmados:
+    scene servicio
     "Hace tres días que se ha descubierto que el presidente no era humano sino un androide."
     "Las ramificaciones de este acontecimiento aún no están definidas."
 
-    #foto
+    scene mani1
     "Se han iniciado pequeñas manifestaciones en la ciudad debido a este descubrimiento"
     " ¿cómo ha llegado el androide a presidente?"
+    scene mani3
     " ¿quién lo puso ahí?"
     " ¿ha sido capaz de engañarnos a todos y que nadie se diera cuenta? o lo que es peor, ¿hay más como él?"
 
-    #foto
+    #foto tertulia
+    scene tertulia
     "A causa de esto están surgiendo distintas corrientes de pensamiento sobre cómo juzgar lo ocurrido."
     "Hay quienes quieren respuestas y justicia, otros sienten miedo ante lo que aún podría quedar por descubrir y algunos argumentan que el hecho de que sea un androide no debería ser motivo de preocupación."
 
-
+    scene black
     "Elige tu personaje"
     menu:
         "Humano":
