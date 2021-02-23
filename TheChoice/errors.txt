@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 84: Line is indented, but the preceding say menuitem statement does not expect a block. Please check this line's indentation.
-    $ humano_confiado +=1
-    ^
+File "game/script.rpy", line 45: is not terminated with a newline. (Check strings and parenthesis.)
+(Perhaps you left out a " at the end of the first line.)
+        Es el año 2632. Los androides son una parte esencial de la sociedad."
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Wed Feb 17 18:19:08 2021
+Tue Feb 23 20:51:45 2021
