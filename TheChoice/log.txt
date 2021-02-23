@@ -1,38 +1,38 @@
-Thu Feb 18 16:47:09 2021
+Tue Feb 23 18:14:32 2021
 Windows-10-10.0.18362
 Ren'Py 7.4.2.1292
  
 
-Bootstrap to the start of init.init took 0.08s
+Bootstrap to the start of init.init took 0.07s
 Early init took 0.00s
-Loader init took 0.01s
-Loading error handling took 0.02s
-Loading script took 0.10s
-Loading save slot metadata. took 0.02s
+Loader init took 0.03s
+Loading error handling took 0.04s
+Loading script took 0.15s
+Loading save slot metadata. took 0.10s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.05s
-Loading analysis data took 0.03s
+Running init code took 0.07s
+Loading analysis data took 0.02s
 Analyze and compile ATL took 0.00s
 Index archives took 0.00s
-Dump and make backups. took 0.07s
+Dump and make backups. took 0.05s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.03s
+Initial gc. took 0.02s
 DPI scale factor: 1.250000
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.01s
+Init translation took 0.03s
+Build styles took 0.00s
 Load screen analysis took 0.02s
 Analyze screens took 0.00s
 Save screen analysis took 0.00s
-Prepare screens took 0.06s
+Prepare screens took 0.05s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.00s
 Running _start took 0.00s
 Performance test:
-Interface start took 0.10s
+Interface start took 0.08s
 
 Initializing gl renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -292,12 +292,4 @@ Texture testing:
 Screen sizes: virtual=(1920, 1080) physical=(1733, 975) drawable=(1733, 975)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 2.53287291527s
-controller: '030000005e0400008e02000000007801' 'ShanWan PS3/PC Wired GamePad' 1L
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.00s
-Load screen analysis took 0.01s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
+Total time until interface ready: 1.47402906418s
