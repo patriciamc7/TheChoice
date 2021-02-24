@@ -168,6 +168,5 @@ label sala1:
 
     label respuestaRapida:
         stop music
-        #hide screen countdownNumber
         play sound "audio/ring.mp3"
         d "Vaya estas tardando mucho en constestar no?"

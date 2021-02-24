@@ -1,74 +1,62 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 117, in script
-    menu:
-  File "renpy/common/000window.rpy", line 111, in _window_auto_callback
-    _window_hide(auto=True)
-  File "renpy/common/000window.rpy", line 101, in _window_hide
-    renpy.with_statement(trans)
-  File "game/script.rpy", line 21, in execute
-    screen countdownNumber:
-  File "game/script.rpy", line 21, in execute
-    screen countdownNumber:
-  File "game/script.rpy", line 22, in execute
-    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), call(timer_call)])
-  File "game/script.rpy", line 22, in keywords
-    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), call(timer_call)])
-  File "game/script.rpy", line 22, in <module>
-    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), call(timer_call)])
-NameError: name 'call' is not defined
+While loading <'Image' u'portada.png'>:
+IOError: Couldn't find file 'portada.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 117, in script
-    menu:
-  File "renpy/ast.py", line 1600, in execute
-    statement_name("menu")
-  File "renpy/ast.py", line 46, in statement_name
-    i(name)
-  File "renpy/common/000window.rpy", line 111, in _window_auto_callback
-    _window_hide(auto=True)
-  File "renpy/common/000window.rpy", line 101, in _window_hide
-    renpy.with_statement(trans)
-  File "renpy/exports.py", line 1637, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "renpy/display/core.py", line 2546, in do_with
-    clear=clear)
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
+    python hide:
+  File "renpy/ast.py", line 922, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "renpy/python.py", line 2218, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
+    python hide:
+  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
+    ui.interact()
+  File "renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "renpy/display/core.py", line 3007, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "renpy/display/core.py", line 3418, in interact_core
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/screen.py", line 432, in visit_all
-    callback(self)
-  File "renpy/display/core.py", line 3418, in <lambda>
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "renpy/display/screen.py", line 443, in per_interact
-    self.update()
-  File "renpy/display/screen.py", line 631, in update
-    self.screen.function(**self.scope)
-  File "game/script.rpy", line 21, in execute
-    screen countdownNumber:
-  File "game/script.rpy", line 21, in execute
-    screen countdownNumber:
-  File "game/script.rpy", line 22, in execute
-    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), call(timer_call)])
-  File "game/script.rpy", line 22, in keywords
-    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), call(timer_call)])
-  File "game/script.rpy", line 22, in <module>
-    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), call(timer_call)])
-NameError: name 'call' is not defined
+  File "renpy/display/core.py", line 3517, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "renpy/display/core.py", line 2377, in draw_screen
+    renpy.config.screen_height,
+  File "render.pyx", line 492, in renpy.display.render.render_screen
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 751, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 751, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 751, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/screen.py", line 681, in render
+    child = renpy.display.render.render(self.child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 751, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/im.py", line 607, in render
+    return cache.get(self, render=True)
+  File "renpy/display/im.py", line 271, in get
+    surf = image.load()
+  File "renpy/display/im.py", line 651, in load
+    filelike = renpy.loader.load(self.filename)
+  File "renpy/loader.py", line 798, in load
+    raise IOError("Couldn't find file '%s'." % name)
+IOError: Couldn't find file 'portada.png'.
 
 Windows-10-10.0.18362
 Ren'Py 7.4.2.1292
 TheChoice 1.0
-Tue Feb 23 20:15:08 2021
+Wed Feb 24 18:11:02 2021
