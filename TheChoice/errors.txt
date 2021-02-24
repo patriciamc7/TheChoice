@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 45: is not terminated with a newline. (Check strings and parenthesis.)
-(Perhaps you left out a " at the end of the first line.)
-        Es el año 2632. Los androides son una parte esencial de la sociedad."
+File "game/options.rpy", line 40: invalid syntax
+    "TheChoice" xalign 0.5 yalign 0.9
+                      ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Tue Feb 23 20:51:45 2021
+Wed Feb 24 21:06:16 2021
