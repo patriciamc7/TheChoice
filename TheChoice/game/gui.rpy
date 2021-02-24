@@ -11,8 +11,6 @@ init offset = -2
 init python:
     gui.init(1920, 1080)
 
-
-
 ################################################################################
 ## GUI Configuration Variables
 ################################################################################
@@ -23,7 +21,7 @@ init python:
 ## The colors of text in the interface.
 
 ## An accent color used throughout the interface to label and highlight text.
-define gui.accent_color = u'#000000'
+define gui.accent_color = u'#8c8989'
 
 ## The color used for a text button when it is neither selected nor hovered.
 define gui.idle_color = u'#aaaaaa'
@@ -85,8 +83,8 @@ define gui.title_text_size = 75
 ## Main and Game Menus #########################################################
 
 ## The images used for the main and game menus.
-define gui.main_menu_background = "gui/main_menu.png"
-define gui.game_menu_background = "gui/game_menu.png"
+define gui.main_menu_background = "portada.png"
+define gui.game_menu_background = "portada.png"
 
 
 ## Dialogue ####################################################################
