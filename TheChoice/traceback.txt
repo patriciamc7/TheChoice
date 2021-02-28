@@ -1,28 +1,63 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While compiling python block starting at line 15 of game/options.rpy.
-TypeError: eval() arg 1 must be a string or code object
+Compiling ATL code at game/image.rpy:5
+  File "game/script.rpy", line 82, in script
+    d "Buenas, soy el detective Collins, ¿es usted X?"
+  File "renpy/common/000window.rpy", line 114, in _window_auto_callback
+    _window_show(auto=True)
+  File "renpy/common/000window.rpy", line 69, in _window_show
+    renpy.with_statement(trans)
+NameError: name 'Collins_saludando' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 326, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 447, in main
-    renpy.game.script.load_script() # sets renpy.game.script.
-  File "renpy/script.py", line 283, in load_script
-    self.load_appropriate_file(".rpyc", ".rpy", dir, fn, initcode)
-  File "renpy/script.py", line 779, in load_appropriate_file
-    self.finish_load(stmts, initcode, filename=lastfn)
-  File "renpy/script.py", line 480, in finish_load
-    node.early_execute()
-  File "renpy/ast.py", line 2146, in early_execute
-    value = renpy.python.py_eval_bytecode(self.code.bytecode)
-  File "renpy/python.py", line 2242, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-TypeError: eval() arg 1 must be a string or code object
+  File "game/script.rpy", line 82, in script
+    d "Buenas, soy el detective Collins, ¿es usted X?"
+  File "renpy/ast.py", line 683, in execute
+    statement_name(getattr(who, "statement_name", "say"))
+  File "renpy/ast.py", line 46, in statement_name
+    i(name)
+  File "renpy/common/000window.rpy", line 114, in _window_auto_callback
+    _window_show(auto=True)
+  File "renpy/common/000window.rpy", line 69, in _window_show
+    renpy.with_statement(trans)
+  File "renpy/exports.py", line 1637, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "renpy/display/core.py", line 2546, in do_with
+    clear=clear)
+  File "renpy/display/core.py", line 3007, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "renpy/display/core.py", line 3418, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "renpy/display/core.py", line 566, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 566, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 566, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 566, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 566, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 566, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 556, in visit_all
+    for d in self.visit():
+  File "renpy/atl.py", line 649, in visit
+    block = self.compile()
+  File "renpy/atl.py", line 556, in compile
+    block = self.atl.compile(self.context)
+  File "renpy/atl.py", line 751, in compile
+    statements = [ i.compile(ctx) for i in self.statements ]
+  File "renpy/atl.py", line 964, in compile
+    child = ctx.eval(expr)
+  File "renpy/atl.py", line 313, in eval
+    return eval(expr, renpy.store.__dict__, self.context) # @UndefinedVariable
+  File "<string>", line 1, in <module>
+NameError: name 'Collins_saludando' is not defined
 
 Windows-10-10.0.18362
 Ren'Py 7.4.2.1292
- 
-Wed Feb 24 21:36:45 2021
+TheChoice 
+Sun Feb 28 13:56:53 2021

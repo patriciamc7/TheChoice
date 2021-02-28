@@ -4,11 +4,12 @@ image mani1 = "mani1.jpg"
 image mani2 = "mani2.jpg"
 image tertulia = "tertulia.jpg"
 image sala1 = "bar.png"
-image federico saludando = "FedeSala1Cerrados.png"
-image federico hablando = "FedeSala1Bajados.png"
+image Collins_saludando = "Assets/Collins/sala1/Poses/BocaCerradaSaludo.png"
+image Collins_saludando_hablando = "Assets/Collins/sala1/Poses/BocaAbiertaSaludo.png"
+image Collins Casual = "Assets/Collins/sala1/Poses/BocaCerradaCasual.png"
 image tertulia = "tertulia.jpg"
 define click = "audio/click.mp3"
-define d = Character("Federico")
+define d = Character("Collins")
 
 label start:
     $ androide_confiado = 0
@@ -77,31 +78,47 @@ label sala1:
 
     scene sala1
     play music "audio/Bar.mp3" fadein 2 fadeout 2
-    show federico saludando with dissolve
-    d "Buenas, soy el detective Federico, ¿es usted X?"
+    show CollinsHablandoSala1Saludo
+    d "Buenas, soy el detective Collins, ¿es usted X?"
+    hide CollinsHablandoSala1Saludo
+    show Collins_saludando
     menu:
         "Emm… sí.": #humano
             play sound click
             $ humano_sospechoso +=1
+            hide  Collins_saludando
+            show CollinsHablandoSala1Casual
             d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
+            hide CollinsHablandoSala1Casual
+            show Collins Casual
 
         "Sí, ¿qué quiere?": #androide
             play sound click
             $ androide_confiado +=1
+            hide  Collins_saludando
+            show CollinsHablandoSala1Casual
             d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
+            hide CollinsHablandoSala1Casual
+            show Collins Casual
 
         "Afirmativo":
             play sound click
             $ androide_sospechoso +=1
+            hide  Collins_saludando
+            show CollinsHablandoSala1Casual
             d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
+            hide CollinsHablandoSala1Casual
+            show Collins Casual
 
         "Soy X, ¿Nos conocemos?":
             play sound click
             $ humano_confiado +=1
+            hide  Collins_saludando
+            show CollinsHablandoSala1Casual
             d "Todavía no, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
+            hide CollinsHablandoSala1Casual
+            show Collins Casual
     #responder
-    hide federico saludando
-    show federico hablando
     menu:
         "He quedado con alguien y como he llegado pronto estoy haciendo tiempo.":
             play sound click
@@ -117,12 +134,12 @@ label sala1:
             $ androide_confiado +=1
 
     d "Perdona, ¿te estoy incomodando?, no puedo dejar la profesión ni para tomar un café jaja"
-    $ time = 3                                     ### set variable time to 3
-    $ timer_range = 3                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+    $ time = 10                                     ### set variable time to 3
+    $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
     $ timer_call = 'respuestaRapida'               ### set where you want to jump once the timer runs out
     show screen countdown                          ### call and start the timer
     #show screen countdownNumber
-    play music "audio/tic_tac.flac" fadein 2
+    play music "audio/tic_tac.mp3" fadein 2
     menu:
         "No tranquilo… ja ja…":
             play sound click
