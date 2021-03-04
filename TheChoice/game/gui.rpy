@@ -46,7 +46,7 @@ define gui.muted_color = u'#666666'
 define gui.hover_muted_color = u'#999999'
 
 ## The colors used for dialogue and menu choice text.
-define gui.text_color = u'#404040'
+define gui.text_color = u'#000000'
 define gui.interface_text_color = u'#404040'
 
 

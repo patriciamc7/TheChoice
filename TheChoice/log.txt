@@ -1,4 +1,4 @@
-Wed Mar  3 18:38:32 2021
+Thu Mar  4 15:24:32 2021
 Windows-10-10.0.18362
 Ren'Py 7.4.2.1292
  
@@ -7,8 +7,8 @@ Bootstrap to the start of init.init took 0.06s
 Early init took 0.00s
 Loader init took 0.02s
 Loading error handling took 0.02s
-Loading script took 0.17s
-Loading save slot metadata. took 0.01s
+Loading script took 0.22s
+Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
 Running init code took 0.04s
@@ -28,9 +28,9 @@ Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.01s
 Save screen analysis took 0.06s
-Prepare screens took 0.05s
+Prepare screens took 0.04s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.04s
+Save bytecode. took 0.03s
 Running _start took 0.00s
 Performance test:
 Interface start took 0.08s
@@ -290,10 +290,10 @@ Texture testing:
 - 512px textures work.
 - 1024px textures work.
 - 2048px textures work.
-Screen sizes: virtual=(1920, 1080) physical=(1733, 975) drawable=(1733, 975)
+Screen sizes: virtual=(1920, 1080) physical=(1738, 978) drawable=(1738, 978)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 1.96245193481s
+Total time until interface ready: 2.00898981094s
 controller: '030000005e0400008e02000000007801' 'ShanWan PS3/PC Wired GamePad' 1L
 Cleaning stores took 0.00s
 Init translation took 0.00s
