@@ -1,5 +1,6 @@
 image calle = "calle.jpg"
-image servicio = "servicio_secreto.jpg"
+
+image servicio = "Assets/Intro/EscenaPolicias/Intro3.png"
 image mani1 = "mani1.jpg"
 image mani2 = "mani2.jpg"
 image tertulia = "tertulia.jpg"
@@ -7,7 +8,6 @@ image sala1 = "bar.png"
 image Collins_saludando = "Assets/Collins/sala1/Poses/BocaCerradaSaludo.png"
 image Collins_saludando_hablando = "Assets/Collins/sala1/Poses/BocaAbiertaSaludo.png"
 image Collins Casual = "Assets/Collins/sala1/Poses/BocaCerradaCasual.png"
-image tertulia = "tertulia.jpg"
 define click = "audio/click.mp3"
 define d = Character("Collins")
 
