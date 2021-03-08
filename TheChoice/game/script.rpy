@@ -1,10 +1,9 @@
 image calle = "calle.jpg"
-
+image pressRoom = "Assets/Intro/PressRoom/intro.png"
 image servicio = "Assets/Intro/EscenaPolicias/Intro3.png"
-image mani1 = "mani1.jpg"
-image mani2 = "mani2.jpg"
-image tertulia = "tertulia.jpg"
-image sala1 = "bar.png"
+image manifestacion = "Mani.png"
+image tertulia = "tertulia.png"
+image sala1 = "bar_prueba2.png"
 image Collins_saludando = "Assets/Collins/sala1/Poses/BocaCerradaSaludo.png"
 image Collins_saludando_hablando = "Assets/Collins/sala1/Poses/BocaAbiertaSaludo.png"
 image Collins Casual = "Assets/Collins/sala1/Poses/BocaCerradaCasual.png"
@@ -48,14 +47,14 @@ label start:
     "Forman parte de tareas como construcción, transporte, tareas del hogar. Pero sólo son vistos como herramientas sin ningún prospecto de que eso cambie."
 
     #foto servicio secreto alarmados:
-    scene servicio
+    scene pressRoom
     "Hace tres días que se ha descubierto que el presidente no era humano sino un androide."
     "Las ramificaciones de este acontecimiento aún no están definidas."
 
-    scene mani1
+    scene servicio
     "Se han iniciado pequeñas manifestaciones en la ciudad debido a este descubrimiento"
     " ¿cómo ha llegado el androide a presidente?"
-    scene mani3
+    scene manifestacion
     " ¿quién lo puso ahí?"
     " ¿ha sido capaz de engañarnos a todos y que nadie se diera cuenta? o lo que es peor, ¿hay más como él?"
 
