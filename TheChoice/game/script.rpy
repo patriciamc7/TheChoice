@@ -91,7 +91,7 @@ label sala1:
             hide CollinsHablandoSala1Casual
             show Collins Casual
 
-        "X, ¿qué quiere?  ?": #androide
+        "X, ¿qué quiere?": #androide
             play sound click
             $ androide_confiado +=1
             hide  Collins_saludando
