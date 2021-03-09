@@ -44,11 +44,11 @@ label start:
     scene calle
     "Es el año 2632. Los androides son una parte esencial de la sociedad."
     #Foto professions
-    "Forman parte de tareas como construcción, transporte, tareas del hogar. Pero sólo son vistos como herramientas sin ningún prospecto de que eso cambie."
+    "Forman parte de tareas como construcción, transporte, tareas del hogar. Pero solo son vistos como herramientas sin ningún prospecto de que eso cambie. "
 
     #foto servicio secreto alarmados:
     scene pressRoom
-    "Hace tres días que se ha descubierto que el presidente no era humano sino un androide."
+    "Hace tres días que se ha descubierto que la presidenta no era humana sino una androide."
     "Las ramificaciones de este acontecimiento aún no están definidas."
 
     scene servicio
@@ -78,11 +78,11 @@ label sala1:
     scene sala1
     play music "audio/Bar.mp3" fadein 2 fadeout 2
     show CollinsHablandoSala1Saludo
-    d "Buenas, soy el detective Collins, ¿es usted X?"
+    d "Buenas, soy el detective Collins, ¿es usted ..."
     hide CollinsHablandoSala1Saludo
     show Collins_saludando
     menu:
-        "Emm… sí.": #humano
+        "Emm… X.": #humano
             play sound click
             $ humano_sospechoso +=1
             hide  Collins_saludando
@@ -91,7 +91,7 @@ label sala1:
             hide CollinsHablandoSala1Casual
             show Collins Casual
 
-        "Sí, ¿qué quiere?": #androide
+        "X, ¿qué quiere?  ?": #androide
             play sound click
             $ androide_confiado +=1
             hide  Collins_saludando
