@@ -173,16 +173,119 @@ label sala1:
         "(Cara seria) Adiós.":
             play sound click
             $ androide_confiado +=1
-        "(sonríe rápidamente y de forma brusca) ¡Como desee!":
+        "(Sonríe rápidamente y de forma brusca) ¡Como desee!":
             play sound click
             $ androide_sospechoso +=1
-        "(sonriendo normal) ¡No me ha molestado para nada! Que tenga un buen dia":
+        "(Sonriendo normal) ¡No me ha molestado para nada! Que tenga un buen dia":
             play sound click
             $ humano_confiado +=1
     stop music
-    return
 
     label respuestaRapida:
         stop music
         play sound "audio/ring.mp3"
         d "Vaya estas tardando mucho en constestar no?"
+
+label sala2:
+    #scene diario o noticias
+    "Con el paso de los días las manifestaciones han crecido y se han ido violentando, las personas quieren respuestas y el gobierno no las da."
+    "Por otro lado, la presidenta ya ha sido destituida y se celebrarán elecciones en dos semanas, donde se asegurará que los candidatos sean humanos."
+    scene black
+    "Han llamado a la puerta, es el detective Collins, el del otro día, quiere hablar, entra en tu casa."
+    #scene casa
+    #show collins
+    d "Gracias por dejarme pasar, no se preocupe, es una pequeña entrevista rutinaria, se lo estamos haciendo a mucha gente."
+    menu:
+        "Entrevista… ¿Sobre qué?":
+            play sound click
+            $ humano_sospechoso +=1
+            d "Supongo que está usted al día de las noticias, las manifestaciones son cada vez más multitudinarias…"
+            d " ¿Ha ido usted a alguna?"
+
+        "¿A qué se debe la invasión de mi perímetro? ":
+            play sound click
+            $ androide_sospechoso +=1
+            d "Supongo que está usted al día de las noticias, las manifestaciones son cada vez más multitudinarias…"
+            d " ¿Ha ido usted a alguna?"
+
+        "Tranquilo, ningún problema. ¿Quiere agua, un café…?":
+            play sound click
+            $ humano_confiado +=1
+            d "No gracias, me acabo de tomar un café en la comisaría. Supongo que está usted al día de las noticias, las manifestaciones son cada vez más multitudinarias…"
+            d "¿Ha ido usted a alguna?"
+    menu:
+        " Sí, necesitamos explicaciones.":
+            play sound click
+            $ humano_confiado +=1
+            d "Con que explicaciones… ¿Cómo cree usted que la presidenta nos ha podido engañar todo este tiempo?"
+            menu:
+                "No lo se. Y como debería saberlo yo? ¡No soy uno de esos androides!":
+                    play sound click
+                    $ humano_sospechoso +=1
+
+                "¿Quién sabe? Se camuflan muy bien. Por lo que yo se usted podría ser uno.":
+                    play sound click
+                    $ humano_confiado +=1
+
+                "Es muy simple imitar el aspecto de los seres humanos.":
+                    play sound click
+                    $ androide_sospechoso +=1
+
+                "Es una cuestión muy compleja, siento no poder serle de más ayuda.":
+                    play sound click
+                    $ androide_confiado +=1
+
+        "Emmm… No… Yo no estoy de acuerdo con estas manifestaciones. ":
+            play sound click
+            $ humano_sospechoso +=1
+        "El acto de manifestación no es una forma lógica de conseguir resultados. ":
+            play sound click
+            $ androide_sospechoso +=1
+        "No, pero lo he considerado.":
+            play sound click
+            $ androide_confiado +=1
+    d "Entiendo, veo que usted vive en un piso muy acogedor. Veo que no tiene fotografías, no es muy habitual si me lo permite."
+
+    menu:
+        "¿Usted cree? Yo he estado en muchas casas sin fotografías (mira nervioso por toda la casa al percatarse de que no tiene fotografías)":
+            play sound click
+            $ humano_sospechoso +=1
+
+        "La verdad es que no me considero fotogénico.":
+            play sound click
+            $ humano_confiado +=1
+
+        "No le veo la necesidad cuando puedo acceder a mi memoria para recordar los eventos.":
+            play sound click
+            $ androide_sospechoso +=1
+
+        "Prefiero tenerlas en la nube y verlas en el ordenador.":
+            play sound click
+            $ androide_confiado +=1
+
+label final:
+
+    if androide_confiado > 5 & personaje == False:
+        "Eres androide, te salvan porque les vas a dar información sobre los otros androides, traicionas a los tuyos para protegerte a ti mismo."
+
+    if androide_confiado > 5 & personaje == True:
+        "Eres humano, te matan aunque saben que no eres androide porque en realidad la existencia de los androides es mentira y es un complot para exterminar a gran parte de la humanidad."
+
+    if humano_sospechoso >5 &  personaje == False:
+        "Eres androide, te matan."
+
+    if humano_sospechoso >5 &  personaje == True:
+        "Eres un humano, lo haces fatal pareces un androide y te matan."
+
+    if humano_confiado >5 &  personaje == False:
+        "Eres androide, te salvas porque pareces un humano."
+
+    if humano_confiado >5 &  personaje == True:
+        "Eres un humano, te salvas."
+
+    if androide_confiado> 5 & personaje == False:
+        "Al final te descubrem pero te perdonan la vida."
+
+    if androide_confiado> 5 & personaje == True:
+        "Los androides se han alzado y estaban mirando si eres de los suyos."
+return
