@@ -7,6 +7,8 @@ image sala1 = "bar_prueba2.png"
 image Collins_saludando = "Assets/Collins/sala1/Poses/BocaCerradaSaludo.png"
 image Collins_saludando_hablando = "Assets/Collins/sala1/Poses/BocaAbiertaSaludo.png"
 image Collins Casual = "Assets/Collins/sala1/Poses/BocaCerradaCasual.png"
+image casa = "sala2.png"
+image noticias = "Noticias.png"
 define click = "audio/click.mp3"
 define d = Character("Collins")
 
@@ -133,11 +135,10 @@ label sala1:
             $ androide_confiado +=1
 
     d "Perdona, ¿te estoy incomodando?, no puedo dejar la profesión ni para tomar un café jaja"
-    $ time = 10                                     ### set variable time to 3
-    $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+    $ time = 10                                    ### set variable time to 3
+    $ timer_range = 10                             ### set variable timer_range to 3 (this is for purposes of showing a bar)
     $ timer_call = 'respuestaRapida'               ### set where you want to jump once the timer runs out
     show screen countdown                          ### call and start the timer
-    #show screen countdownNumber
     play music "audio/tic_tac.mp3" fadein 2
     menu:
         "No tranquilo… ja ja…":
@@ -181,19 +182,15 @@ label sala1:
             $ humano_confiado +=1
     stop music
 
-    label respuestaRapida:
-        stop music
-        play sound "audio/ring.mp3"
-        d "Vaya estas tardando mucho en constestar no?"
 
 label sala2:
-    #scene diario o noticias
+    scene noticias
     "Con el paso de los días las manifestaciones han crecido y se han ido violentando, las personas quieren respuestas y el gobierno no las da."
     "Por otro lado, la presidenta ya ha sido destituida y se celebrarán elecciones en dos semanas, donde se asegurará que los candidatos sean humanos."
     scene black
     "Han llamado a la puerta, es el detective Collins, el del otro día, quiere hablar, entra en tu casa."
-    #scene casa
-    #show collins
+    scene casa
+    show Collins Casual at left
     d "Gracias por dejarme pasar, no se preocupe, es una pequeña entrevista rutinaria, se lo estamos haciendo a mucha gente."
     menu:
         "Entrevista… ¿Sobre qué?":
@@ -289,3 +286,9 @@ label final:
     if androide_confiado> 5 & personaje == True:
         "Los androides se han alzado y estaban mirando si eres de los suyos."
 return
+
+
+label respuestaRapida:
+    stop music
+    play sound "audio/ring.mp3"
+    d "Vaya estas tardando mucho en constestar no?"
