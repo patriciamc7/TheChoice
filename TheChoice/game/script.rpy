@@ -9,6 +9,7 @@ image Collins_saludando_hablando = "Assets/Collins/sala1/Poses/BocaAbiertaSaludo
 image Collins Casual = "Assets/Collins/sala1/Poses/BocaCerradaCasual.png"
 image casa = "sala2.png"
 image noticias = "Noticias.png"
+image movie  = Movie(play="noticias.avi", mask="noticias.avi")
 define click = "audio/click.mp3"
 define d = Character("Collins")
 
@@ -184,9 +185,11 @@ label sala1:
 
 
 label sala2:
-    scene noticias
+    show movie
+    #scene noticias
     "Con el paso de los días las manifestaciones han crecido y se han ido violentando, las personas quieren respuestas y el gobierno no las da."
     "Por otro lado, la presidenta ya ha sido destituida y se celebrarán elecciones en dos semanas, donde se asegurará que los candidatos sean humanos."
+    hide movie
     scene black
     "Han llamado a la puerta, es el detective Collins, el del otro día, quiere hablar, entra en tu casa."
     scene casa
