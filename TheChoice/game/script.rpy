@@ -4,16 +4,15 @@ image servicio = "Assets/Intro/EscenaPolicias/Intro3.png"
 image manifestacion = "Mani.png"
 image tertulia = "tertulia.png"
 image sala1 = "bar_prueba2.png"
-image Collins_saludando = "Assets/Collins/sala1/Poses/BocaCerradaSaludo.png"
-image Collins_saludando_hablando = "Assets/Collins/sala1/Poses/BocaAbiertaSaludo.png"
+image Collins Saludando = "Assets/Collins/sala1/Poses/BocaCerradaSaludo.png"
 image Collins Casual = "Assets/Collins/sala1/Poses/BocaCerradaCasual.png"
+image Collins Casual2 = "collins_sala2.png"
 image casa = "sala2.png"
-#image noticias = "Noticias.png"
 image noticias = Movie(play="noticias.webm", size=(1920,1080),)
 define click = "audio/click.mp3"
 define d = Character("Collins")
 
-label start:
+label start:#
     $ androide_confiado = 0
     $ humano_sospechoso = 0
     $ androide_sospechoso = 0
@@ -43,13 +42,10 @@ label start:
         $ timer_range = 0 # timer_range = a number matching time (bar only)
         $ timer_call = 0 # timer_call = the label to call to when time runs out
 
-    #Foto calle transitada
     scene calle
     "Es el año 2632. Los androides son una parte esencial de la sociedad."
-    #Foto professions
     "Forman parte de tareas como construcción, transporte, tareas del hogar. Pero solo son vistos como herramientas sin ningún prospecto de que eso cambie. "
 
-    #foto servicio secreto alarmados:
     scene pressRoom
     "Hace tres días que se ha descubierto que la presidenta no era humana sino una androide."
     "Las ramificaciones de este acontecimiento aún no están definidas."
@@ -61,10 +57,10 @@ label start:
     " ¿quién lo puso ahí?"
     " ¿ha sido capaz de engañarnos a todos y que nadie se diera cuenta? o lo que es peor, ¿hay más como él?"
 
-    #foto tertulia
     scene tertulia
     "A causa de esto están surgiendo distintas corrientes de pensamiento sobre cómo juzgar lo ocurrido."
     "Hay quienes quieren respuestas y justicia, otros sienten miedo ante lo que aún podría quedar por descubrir y algunos argumentan que el hecho de que sea un androide no debería ser motivo de preocupación."
+
     scene black
     "Elige tu personaje"
     menu:
@@ -74,53 +70,43 @@ label start:
         "Androide":
             play sound click
             $ personaje = False
-    #return
 
 label sala1:
 
     scene sala1
     play music "audio/Bar.mp3" fadein 2 fadeout 2
-    show CollinsHablandoSala1Saludo
+    show Collins Saludando
     d "Buenas, soy el detective Collins, ¿es usted ..."
-    hide CollinsHablandoSala1Saludo
-    show Collins_saludando
     menu:
         "Emm… X.": #humano
             play sound click
             $ humano_sospechoso +=1
-            hide  Collins_saludando
-            show CollinsHablandoSala1Casual
-            d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
-            hide CollinsHablandoSala1Casual
+            hide   Collins Saludando
             show Collins Casual
+            d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
 
         "X, ¿qué quiere?": #androide
             play sound click
             $ androide_confiado +=1
-            hide  Collins_saludando
-            show CollinsHablandoSala1Casual
-            d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
-            hide CollinsHablandoSala1Casual
+            hide   Collins Saludando
             show Collins Casual
+            d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
 
         "Afirmativo":
             play sound click
             $ androide_sospechoso +=1
-            hide  Collins_saludando
-            show CollinsHablandoSala1Casual
-            d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
-            hide CollinsHablandoSala1Casual
+            hide   Collins Saludando
             show Collins Casual
+            d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
+
 
         "Soy X, ¿Nos conocemos?":
             play sound click
             $ humano_confiado +=1
-            hide  Collins_saludando
-            show CollinsHablandoSala1Casual
-            d "Todavía no, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
-            hide CollinsHablandoSala1Casual
+            hide   Collins Saludando
             show Collins Casual
-    #responder
+            d "Todavía no, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
+
     menu:
         "He quedado con alguien y como he llegado pronto estoy haciendo tiempo.":
             play sound click
@@ -194,7 +180,7 @@ label sala2:
     scene black
     "Han llamado a la puerta, es el detective Collins, el del otro día, quiere hablar, entra en tu casa."
     scene casa
-    show Collins Casual at left
+    show Collins Casual2
     d "Gracias por dejarme pasar, no se preocupe, es una pequeña entrevista rutinaria, se lo estamos haciendo a mucha gente."
     menu:
         "Entrevista… ¿Sobre qué?":
@@ -245,24 +231,25 @@ label sala2:
         "No, pero lo he considerado.":
             play sound click
             $ androide_confiado +=1
-    d "Entiendo, veo que usted vive en un piso muy acogedor. Veo que no tiene fotografías, no es muy habitual si me lo permite."
 
-    menu:
-        "¿Usted cree? Yo he estado en muchas casas sin fotografías (mira nervioso por toda la casa al percatarse de que no tiene fotografías)":
-            play sound click
-            $ humano_sospechoso +=1
+    if personaje == False:
+        d "Entiendo, veo que usted vive en un piso muy acogedor. Veo que no tiene fotografías, no es muy habitual si me lo permite."
+        menu:
+            "¿Usted cree? Yo he estado en muchas casas sin fotografías (mira nervioso por toda la casa al percatarse de que no tiene fotografías)":
+                play sound click
+                $ humano_sospechoso +=1
 
-        "La verdad es que no me considero fotogénico.":
-            play sound click
-            $ humano_confiado +=1
+            "La verdad es que no me considero fotogénico.":
+                play sound click
+                $ humano_confiado +=1
 
-        "No le veo la necesidad cuando puedo acceder a mi memoria para recordar los eventos.":
-            play sound click
-            $ androide_sospechoso +=1
+            "No le veo la necesidad cuando puedo acceder a mi memoria para recordar los eventos.":
+                play sound click
+                $ androide_sospechoso +=1
 
-        "Prefiero tenerlas en la nube y verlas en el ordenador.":
-            play sound click
-            $ androide_confiado +=1
+            "Prefiero tenerlas en la nube y verlas en el ordenador.":
+                play sound click
+                $ androide_confiado +=1
 
 label final:
 
