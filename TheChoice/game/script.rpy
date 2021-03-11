@@ -70,7 +70,10 @@ label start:#
         "Androide":
             play sound click
             $ personaje = False
-
+    $ player_name = renpy.input("Enter name")
+    $ player_name = player_name.strip()
+    if player_name == "":
+        $ player_name = "Alan Quim González"
 label sala1:
 
     scene sala1
@@ -78,14 +81,14 @@ label sala1:
     show Collins Saludando
     d "Buenas, soy el detective Collins, ¿es usted ..."
     menu:
-        "Emm… X.": #humano
+        "Emm… [player_name].": #humano
             play sound click
             $ humano_sospechoso +=1
             hide   Collins Saludando
             show Collins Casual
             d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
 
-        "X, ¿qué quiere?": #androide
+        "[player_name], ¿qué quiere?": #androide
             play sound click
             $ androide_confiado +=1
             hide   Collins Saludando
@@ -100,7 +103,7 @@ label sala1:
             d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
 
 
-        "Soy X, ¿Nos conocemos?":
+        "Soy [player_name], ¿Nos conocemos?":
             play sound click
             $ humano_confiado +=1
             hide   Collins Saludando
