@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 222: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    " No lo se. Y como debería saberlo yo? ¡No soy uno de esos androides! "
-                                                                           ^
-
-File "game/script.rpy", line 250: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "¿Usted cree? Yo he estado en muchas casas sin fotografías (mira nervioso por toda la casa al percatarse de que no tiene fotografías)"
-                                                                                                                                          ^
+File "game/script.rpy", line 429: expected menuitem
+    show Collins Casual3:
+    ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Wed Mar 10 17:58:21 2021
+Mon Mar 15 00:50:24 2021

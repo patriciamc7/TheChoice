@@ -1,12 +1,16 @@
 image calle = "calle.jpg"
 image pressRoom = "Assets/Intro/PressRoom/intro.png"
 image servicio = "Assets/Intro/EscenaPolicias/Intro3.png"
+image sala4 = "sala4.png"
 image manifestacion = "Mani.png"
 image tertulia = "tertulia.png"
 image sala1 = "bar_prueba2.png"
+image sala3 = "sala3.png"
 image Collins Saludando = "Assets/Collins/sala1/Poses/BocaCerradaSaludo.png"
 image Collins Casual = "Assets/Collins/sala1/Poses/BocaCerradaCasual.png"
 image Collins Casual2 = "collins_sala2.png"
+image Collins Dudoso = "collins3_dudoso.png"
+image Collins Casual3 =  "Collins_causal3.png"
 image casa = "sala2.png"
 image noticias = Movie(play="noticias.webm", size=(1920,1080),)
 define click = "audio/click.mp3"
@@ -18,6 +22,7 @@ label start:#
     $ androide_sospechoso = 0
     $ humano_confiado = 0
     $ personaje = True
+    $ robot = False
     stop music
 
     transform alpha_dissolve:
@@ -70,6 +75,7 @@ label start:#
         "Androide":
             play sound click
             $ personaje = False
+
     $ player_name = renpy.input("Enter name")
     $ player_name = player_name.strip()
     if player_name == "":
@@ -179,7 +185,6 @@ label sala2:
         xpos 0 ypos 0
     "Con el paso de los días las manifestaciones han crecido y se han ido violentando, las personas quieren respuestas y el gobierno no las da."
     "Por otro lado, la presidenta ya ha sido destituida y se celebrarán elecciones en dos semanas, donde se asegurará que los candidatos sean humanos."
-    hide movie
     scene black
     "Han llamado a la puerta, es el detective Collins, el del otro día, quiere hablar, entra en tu casa."
     scene casa
@@ -253,6 +258,233 @@ label sala2:
             "Prefiero tenerlas en la nube y verlas en el ordenador.":
                 play sound click
                 $ androide_confiado +=1
+    d "Bueno, tengo que irme a hacer más entrevistas rutinarias, gracias por su tiempo y tenga mi contacto, por si se entera de algo que pueda sernos de ayuda. ¡Nos vemos!"
+    menu:
+        "(Abriendo los ojos) ¡Adiós! ":
+            play sound click
+            $ humano_sospechoso +=1
+
+        "(Con cara pensativa) Claro, por supuesto, ¡adiós!":
+            play sound click
+            $ humano_confiado +=1
+
+        "(Inexpresivo) Adiós.":
+            play sound click
+            $ androide_sospechoso +=1
+
+        "(Con cara pensativa) Como desee, ¡adiós! ":
+            play sound click
+            $ androide_confiado +=1
+
+    show noticias:
+        xpos 0 ypos 0
+    "La situación en las calles es de caos absoluto."
+    "Las manifestaciones se han convertido en acampadas violentas de gente que ocupan toda la calle principal, llevan ya una semana acampando."
+    "Esto es debido a los sucesos de las elecciones, donde unos encapuchados bastante organizados entraron en varios colegios electorales a la vez impidiendo el voto de las personas."
+    "Aún está por determinar la identidad de estos encapuchados y si son androides o humanos."
+    hide noticias
+    show black
+    "El detective Collins te ha citado en comisaría."
+    scene sala3
+    show Collins Casual3
+    d"Le hemos citado aquí porque le hemos visto en una de esas acampadas violentas que está haciendo la gente por toda la ciudad,  quemando contenedores, rompiendo escaparates, tirando piedras a los policías… "
+    d "¿Qué pretenden conseguir con tanta violencia?"
+
+    menu:
+        "(Nervioso) Bueno… Tampoco… Yo no… ":
+            play sound click
+            $ humano_sospechoso +=1
+            hide Collins Casual3
+            show Collins Dudoso
+            d "¡Déjese de tartamudeos! ¿Por qué estuvo en la manifestación?"
+            menu:
+                " (Con voz temblorosa) ¡Unos amigos me obligaron a ir! ":
+                    play sound click
+                    $ humano_sospechoso +=1
+
+                " ¡Yo no hice nada! Solo estaba manifestándome cuando no se quien empezó a liarla.":
+                    play sound click
+                    $ humano_confiado +=1
+
+                " Lo que queremos es votar, la violencia no es cosa nuestra.":
+                    play sound click
+                    $ androide_sospechoso +=1
+            show Collins Casual3
+
+        "(Alterado) ¡Explicaciones! Pensábamos que votando podríamos solucionar algo pero no nos dejaron y nadie dice ni hace nada!":
+            play sound click
+            $ humano_confiado +=1
+
+        "(Monótono) Los androides no pueden dañar a los seres humanos… ":
+            play sound click
+            $ androide_sospechoso +=1
+
+        "(Relajado) No participé en la violencia, aunque deberían haber explicaciones de por qué no podemos votar. ":
+            play sound click
+            $ androide_confiado +=1
+
+    d "Y dígame… ¿cuál es su opinión acerca del uso o posesión de androides para los trabajos que los humanos no queremos hacer?"
+    menu:
+        "Bueno… Los creamos para eso, ¿no?":
+            play sound click
+            $ humano_sospechoso +=1
+
+        "Nos facilitan mucho la vida, aunque también nos quitan puestos de trabajo y generan pobreza.":
+            play sound click
+            $ humano_confiado +=1
+
+        "Es para lo que los androides fueron creados.":
+            play sound click
+            $ androide_sospechoso +=1
+
+        "Supongo que ayudan, aunque se les podría tener en más consideración. ":
+            play sound click
+            $ androide_confiado +=1
+    d " Y sobre la presidenta, ¿qué opina?"
+
+    menu:
+        "Que no sabemos cómo ha llegado ahí, y si son capaces de pensar por sí mismos, y si están entre nosotros y no lo sabemos, y si… (empieza a hiperventilar)":
+            play sound click
+            $ humano_sospechoso -=1
+
+        "La verdad es que hizo una gran labor, aunque eso no quita el hecho de que nos engañó a todos.":
+            play sound click
+            $ humano_confiado +=1
+
+        "Esa no es la función de un androide.":
+            play sound click
+            $ androide_sospechoso +=1
+
+        " No sabemos cómo lo consiguió, pero su intención era buena, lo sé. ":
+            play sound click
+            $ androide_confiado +=1
+            d " Con que lo sabe… No será usted cercano a la presidenta o a alguien de su círculo íntimo, ¿no?"
+            menu:
+                "¿QUÉ? Nonono… ":
+                    play sound click
+                    $ humano_sospechoso +=1
+
+                " No, aunque me gustaría, así al menos tendría respuestas.":
+                    play sound click
+                    $ humano_confiado +=1
+
+                "(Cara de duda) ":
+                    play sound click
+                    $ androide_sospechoso +=1
+
+                "Por desgracia no, pero sería interesante.":
+                    play sound click
+                    $ androide_confiado +=1
+
+    hide Collins Casual3
+    show Collins Dudoso
+    d "De acuerdo, puede irse, pero quédese en casa y no salga del país. Le estaremos vigilando."
+    menu:
+        "(Con la voz entrecortada y susurrando) De acuerdo. ":
+            play sound click
+            $ humano_sospechoso +=1
+
+        "(Serio y sin mirarle a la cara) De acuerdo.":
+            play sound click
+            $ humano_confiado +=1
+
+        "(Inexpresivo) De acuerdo.":
+            play sound click
+            $ androide_sospechoso +=1
+
+        "(Mirándole a los ojos) De acuerdo. ":
+            play sound click
+            $ androide_confiado +=1
+
+    show noticias:
+        xpos 0 ypos 0
+    "Por fin se ha conocido la identidad de los encapuchados, era un grupo de androides que pedían la igualdad y ser considerados humanos. "
+    "Gracias a las nuevas leyes propuestas por el nuevo presidente, elegido de manera muy democrática, los androides fueron apagados ayer, junto con los androides descubiertos entre los manifestantes de las protestas."
+    "Gracias a nuestro nuevo presidente, las calles y las personas vuelven a estar seguras."
+    hide noticias
+    show black
+    "Te han venido a buscar a casa. Te vendan los ojos y te meten en un coche. No sabes dónde te están llevando. Tienes miedo."
+    scene sala4
+    show Collins Casual3
+    d" ¿Por qué no intentó escapar? Viendo cómo están las cosas… "
+    menu:
+        " Yo no he… Usted…":
+            play sound click
+            $ humano_sospechoso +=1
+
+        "No he hecho nada malo, usted como detective me dijo que no me fuera y confié en usted.":
+            play sound click
+            $ humano_confiado +=1
+
+        "Me dio la orden de no marchar. ":
+            play sound click
+            $ androide_sospechoso +=1
+
+        "No he hecho nada.":
+            play sound click
+            $ androide_confiado +=1
+    show Collins Dudoso
+    d "Dejémonos de rodeos, ¿qué modelo eres?, ¿quién te ha fabricado?"
+    menu:
+
+        " (Llorando) ¿QUÉ? No, no… Yo no soy… ":
+            play sound click
+            $ humano_sospechoso +=1
+            $ robot = False
+
+        "(Alterado) No soy un androide, mi nombre es [player_name], ya se lo dije.":
+            play sound click
+            $ humano_confiado +=1
+            $ robot = False
+
+        "Soy el modelo AX483Z5G, mi creadora es la señora Emily Smith.":
+            play sound click
+            $ androide_sospechoso +=1
+            $ robot = True
+            d "¿Qué tramais los androides?"
+
+        "(Desafiante) Ya sabe mi nombre. ":
+            play sound click
+            $ androide_confiado +=1
+            $ robot = False
+    if robot == False:
+        d "¿Cómo lo haces para aparentar ser humano? ¿Te han enseñado o es algo que “surge” dentro de vosotros?"
+        menu:
+            "  (Llorando desconsoladamente) SOY un humano, no lo aparento, por favor, ¡sacadme de aquí!":
+                play sound click
+                $ humano_sospechoso +=1
+
+            "(Muy alterado) ¿Qué dices? no lo aparento, ¡lo soy!":
+                play sound click
+                $ humano_confiado +=1
+
+            "(Desafiante) No sé de qué me habla.":
+                play sound click
+                $ androide_confiado +=1
+
+        d " ¡Corta el rollo! ¿Qué es lo que estáis tramando?"
+
+    menu:
+        "(Hiperventilando y llorando) ¡No lo sé! ¡Por favor, dejadme salir de aquí! ¡AYUDAAAA!":
+            play sound click
+            $ humano_sospechoso +=1
+            $ robot = False
+
+        "(Muy alterado) ¡No lo sé! ¡¿Cuántas veces tengo que decirte que no soy un androide?! ":
+            play sound click
+            $ humano_confiado +=1
+            $ robot = False
+
+        "No tengo esa información en mi base de datos. ":
+            play sound click
+            $ androide_sospechoso +=1
+            $ robot = True
+            d "¿Qué tramais los androides?"
+
+        "(Desafiante) No lo sé, pero viendo como los estáis tratando… Seguro que solo quieren igualdad.":
+            play sound click
+            $ androide_confiado +=1
+            $ robot = False
 
 label final:
 
