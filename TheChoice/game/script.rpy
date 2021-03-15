@@ -11,6 +11,8 @@ image Collins Casual = "Assets/Collins/sala1/Poses/BocaCerradaCasual.png"
 image Collins Casual2 = "collins_sala2.png"
 image Collins Dudoso = "collins3_dudoso.png"
 image Collins Casual3 =  "Collins_causal3.png"
+image Collins Casual4 = "CollinsCasual4.png"
+image Collins Dudoso4 = "collins4_dudoso.png"
 image casa = "sala2.png"
 image noticias = Movie(play="noticias.webm", size=(1920,1080),)
 define click = "audio/click.mp3"
@@ -405,7 +407,7 @@ label sala2:
     show black
     "Te han venido a buscar a casa. Te vendan los ojos y te meten en un coche. No sabes dónde te están llevando. Tienes miedo."
     scene sala4
-    show Collins Casual3
+    show Collins Casual4
     d" ¿Por qué no intentó escapar? Viendo cómo están las cosas… "
     menu:
         " Yo no he… Usted…":
@@ -423,7 +425,7 @@ label sala2:
         "No he hecho nada.":
             play sound click
             $ androide_confiado +=1
-    show Collins Dudoso
+    show Collins Dudoso4
     d "Dejémonos de rodeos, ¿qué modelo eres?, ¿quién te ha fabricado?"
     menu:
 
@@ -487,7 +489,7 @@ label sala2:
             $ robot = False
 
 label final:
-
+    scene black
     if androide_confiado > 5 & personaje == False:
         "Eres androide, te salvan porque les vas a dar información sobre los otros androides, traicionas a los tuyos para protegerte a ti mismo."
 
