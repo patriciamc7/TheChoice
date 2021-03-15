@@ -94,21 +94,21 @@ label sala1:
             $ humano_sospechoso +=1
             hide   Collins Saludando
             show Collins Casual
-            d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
+            d "Tranquilo hombre, como habrá oído, estamos investigando el caso de la presidenta, hemos hecho un descanso en la investigación y he venido a por una copa. Y usted, ¿qué hace aquí?"
 
         "[player_name], ¿qué quiere?": #androide
             play sound click
             $ androide_confiado +=1
             hide   Collins Saludando
             show Collins Casual
-            d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
+            d "Tranquilo hombre, como habrá oído, estamos investigando el caso de la presidenta, hemos hecho un descanso en la investigación y he venido a por una copa. Y usted, ¿qué hace aquí?"
 
         "Afirmativo":
             play sound click
             $ androide_sospechoso +=1
             hide   Collins Saludando
             show Collins Casual
-            d "Tranquilo hombre, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
+            d "Tranquilo hombre, como habrá oído, estamos investigando el caso de la presidenta, hemos hecho un descanso en la investigación y he venido a por una copa. Y usted, ¿qué hace aquí?"
 
 
         "Soy [player_name], ¿Nos conocemos?":
@@ -116,13 +116,13 @@ label sala1:
             $ humano_confiado +=1
             hide   Collins Saludando
             show Collins Casual
-            d "Todavía no, como habrá oído, estamos investigando el caso del presidente, hemos hecho un descanso en la investigación y he venido a por un café. Y usted, ¿qué hace aquí?"
+            d "Todavía no, como habrá oído, estamos investigando el caso de la presidenta, hemos hecho un descanso en la investigación y he venido a por una copa. Y usted, ¿qué hace aquí?"
 
     menu:
         "He quedado con alguien y como he llegado pronto estoy haciendo tiempo.":
             play sound click
             $ humano_confiado +=1
-        "Me apetecía un café y he venido, ¿a qué viene tanta pregunta?":
+        "Me apetecía una copa y he venido, ¿a qué viene tanta pregunta?":
             play sound click
             $ humano_sospechoso +=1
         "He venido a buscar refrigerante para mi aparato digestivo y a la vez estimularme.":
@@ -341,7 +341,7 @@ label sala2:
 
         "Supongo que ayudan, aunque se les podría tener en más consideración. ":
             play sound click
-            $ androide_confiado +=1
+            $ androide_confiado -=1
     d " Y sobre la presidenta, ¿qué opina?"
 
     menu:
@@ -359,7 +359,7 @@ label sala2:
 
         " No sabemos cómo lo consiguió, pero su intención era buena, lo sé. ":
             play sound click
-            $ androide_confiado +=1
+            $ androide_confiado -=1
             d " Con que lo sabe… No será usted cercano a la presidenta o a alguien de su círculo íntimo, ¿no?"
             menu:
                 "¿QUÉ? Nonono… ":
@@ -376,7 +376,7 @@ label sala2:
 
                 "Por desgracia no, pero sería interesante.":
                     play sound click
-                    $ androide_confiado +=1
+                    $ androide_confiado -=1
 
     hide Collins Casual3
     show Collins Dudoso
@@ -431,7 +431,7 @@ label sala2:
 
         " (Llorando) ¿QUÉ? No, no… Yo no soy… ":
             play sound click
-            $ humano_sospechoso +=1
+            $ humano_sospechoso -=1
             $ robot = False
 
         "(Alterado) No soy un androide, mi nombre es [player_name], ya se lo dije.":
@@ -454,7 +454,7 @@ label sala2:
         menu:
             "  (Llorando desconsoladamente) SOY un humano, no lo aparento, por favor, ¡sacadme de aquí!":
                 play sound click
-                $ humano_sospechoso +=1
+                $ humano_sospechoso -=1
 
             "(Muy alterado) ¿Qué dices? no lo aparento, ¡lo soy!":
                 play sound click
@@ -469,7 +469,7 @@ label sala2:
     menu:
         "(Hiperventilando y llorando) ¡No lo sé! ¡Por favor, dejadme salir de aquí! ¡AYUDAAAA!":
             play sound click
-            $ humano_sospechoso +=1
+            $ humano_sospechoso -=1
             $ robot = False
 
         "(Muy alterado) ¡No lo sé! ¡¿Cuántas veces tengo que decirte que no soy un androide?! ":
@@ -485,7 +485,7 @@ label sala2:
 
         "(Desafiante) No lo sé, pero viendo como los estáis tratando… Seguro que solo quieren igualdad.":
             play sound click
-            $ androide_confiado +=1
+            $ androide_confiado -=1
             $ robot = False
 
 label final:
