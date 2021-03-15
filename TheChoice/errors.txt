@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 429: expected menuitem
-    show Collins Casual3:
-    ^
+File "game/script.rpy", line 523: expected statement.
+    humano_sospechoso += 1
+                      ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Mon Mar 15 00:50:24 2021
+Mon Mar 15 18:55:57 2021

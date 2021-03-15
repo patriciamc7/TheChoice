@@ -18,7 +18,23 @@ image noticias = Movie(play="noticias.webm", size=(1920,1080),)
 define click = "audio/click.mp3"
 define d = Character("Collins")
 
-label start:#
+label pregunta_rapida:
+        screen countdown:
+            timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Call(timer_call)])
+
+            if time > 1:
+                bar value time range timer_range xalign 0.5 yalign 0.9 xmaximum 300 left_bar "#000000" right_bar "#807e7e" at alpha_dissolve # This is the timer bar.
+                text str(time) xalign 0.5 yalign 0.9 color "#ffffff" at alpha_dissolve
+
+            elif time>0.1:
+                bar value time range timer_range xalign 0.5 yalign 0.9 xmaximum 300 left_bar "#000000" right_bar "#6e1818" at alpha_dissolve # This is the timer bar.
+                text str(time) xalign 0.5 yalign 0.9 color "#ff1100" at alpha_dissolve
+
+        init:# time = the time the timer takes to count down to 0.
+            $ timer_range = 0 # timer_range = a number matching time (bar only)
+            $ timer_call = 0 # timer_call = the label to call to when time runs out
+
+label start:
     $ androide_confiado = 0
     $ humano_sospechoso = 0
     $ androide_sospechoso = 0
@@ -33,21 +49,6 @@ label start:#
         on hide:
             linear 0.5 alpha 0
         # This is to fade the bar in and out, and is only required once in your script
-
-    screen countdown:
-        timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Call(timer_call)])
-
-        if time > 1:
-            bar value time range timer_range xalign 0.5 yalign 0.9 xmaximum 300 left_bar "#000000" right_bar "#807e7e" at alpha_dissolve # This is the timer bar.
-            text str(time) xalign 0.5 yalign 0.9 color "#ffffff" at alpha_dissolve
-
-        elif time>0.1:
-            bar value time range timer_range xalign 0.5 yalign 0.9 xmaximum 300 left_bar "#000000" right_bar "#6e1818" at alpha_dissolve # This is the timer bar.
-            text str(time) xalign 0.5 yalign 0.9 color "#ff1100" at alpha_dissolve
-
-    init:# time = the time the timer takes to count down to 0.
-        $ timer_range = 0 # timer_range = a number matching time (bar only)
-        $ timer_call = 0 # timer_call = the label to call to when time runs out
 
     scene calle
     "Es el año 2632. Los androides son una parte esencial de la sociedad."
@@ -78,10 +79,11 @@ label start:#
             play sound click
             $ personaje = False
 
-    $ player_name = renpy.input("Enter name")
+    $ player_name = renpy.input("Estribe tu nombre")
     $ player_name = player_name.strip()
     if player_name == "":
         $ player_name = "Alan Quim González"
+
 label sala1:
 
     scene sala1
@@ -133,16 +135,9 @@ label sala1:
             $ androide_confiado +=1
 
     d "Perdona, ¿te estoy incomodando?, no puedo dejar la profesión ni para tomar un café jaja"
-    $ time = 10                                    ### set variable time to 3
-    $ timer_range = 10                             ### set variable timer_range to 3 (this is for purposes of showing a bar)
-    $ timer_call = 'respuestaRapida'               ### set where you want to jump once the timer runs out
-    show screen countdown                          ### call and start the timer
-    play music "audio/tic_tac.mp3" fadein 2
     menu:
         "No tranquilo… ja ja…":
             play sound click
-            stop music
-            hide screen countdown                  ### stop the timer
             $ humano_sospechoso +=1
         "No no, perdón por la sequedad, un mal día.":
             play sound click
@@ -182,7 +177,8 @@ label sala1:
 
 
 label sala2:
-
+    hide sala1
+    scene black
     show noticias:
         xpos 0 ypos 0
     "Con el paso de los días las manifestaciones han crecido y se han ido violentando, las personas quieren respuestas y el gobierno no las da."
@@ -245,7 +241,7 @@ label sala2:
     if personaje == False:
         d "Entiendo, veo que usted vive en un piso muy acogedor. Veo que no tiene fotografías, no es muy habitual si me lo permite."
         menu:
-            "¿Usted cree? Yo he estado en muchas casas sin fotografías (mira nervioso por toda la casa al percatarse de que no tiene fotografías)":
+            "¿Usted cree? Yo he estado en muchas casas sin fotografías (mira nervioso por toda la casa.)":
                 play sound click
                 $ humano_sospechoso +=1
 
@@ -299,18 +295,29 @@ label sala2:
             hide Collins Casual3
             show Collins Dudoso
             d "¡Déjese de tartamudeos! ¿Por qué estuvo en la manifestación?"
+            $ time = 10                                    ### set variable time to 3
+            $ timer_range = 10                             ### set variable timer_range to 3 (this is for purposes of showing a bar)
+            $ timer_call = 'respuestaRapida'               ### set where you want to jump once the timer runs out
+            show screen countdown                          ### call and start the timer
+            play music "audio/tic_tac.mp3" fadein 2
             menu:
                 " (Con voz temblorosa) ¡Unos amigos me obligaron a ir! ":
                     play sound click
                     $ humano_sospechoso +=1
+                    stop music
+                    hide screen countdown                  ### stop the timer
 
                 " ¡Yo no hice nada! Solo estaba manifestándome cuando no se quien empezó a liarla.":
                     play sound click
                     $ humano_confiado +=1
+                    stop music
+                    hide screen countdown                  ### stop the timer
 
                 " Lo que queremos es votar, la violencia no es cosa nuestra.":
                     play sound click
                     $ androide_sospechoso +=1
+                    stop music
+                    hide screen countdown                  ### stop the timer
             show Collins Casual3
 
         "(Alterado) ¡Explicaciones! Pensábamos que votando podríamos solucionar algo pero no nos dejaron y nadie dice ni hace nada!":
@@ -361,22 +368,36 @@ label sala2:
             play sound click
             $ androide_confiado -=1
             d " Con que lo sabe… No será usted cercano a la presidenta o a alguien de su círculo íntimo, ¿no?"
+            $ time = 10                                    ### set variable time to 3
+            $ timer_range = 10                             ### set variable timer_range to 3 (this is for purposes of showing a bar)
+            $ timer_call = 'respuestaRapida'               ### set where you want to jump once the timer runs out
+            show screen countdown                          ### call and start the timer
+            play music "audio/tic_tac.mp3" fadein 2
             menu:
                 "¿QUÉ? Nonono… ":
                     play sound click
                     $ humano_sospechoso +=1
+                    stop music
+                    hide screen countdown                  ### stop the timer
 
                 " No, aunque me gustaría, así al menos tendría respuestas.":
                     play sound click
                     $ humano_confiado +=1
+                    stop music
+                    hide screen countdown                  ### stop the timer
 
                 "(Cara de duda) ":
                     play sound click
                     $ androide_sospechoso +=1
+                    stop music
+                    hide screen countdown                  ### stop the timer
 
                 "Por desgracia no, pero sería interesante.":
                     play sound click
                     $ androide_confiado -=1
+                    stop music
+                    hide screen countdown                  ### stop the timer
+
 
     hide Collins Casual3
     show Collins Dudoso
@@ -408,6 +429,7 @@ label sala2:
     "Te han venido a buscar a casa. Te vendan los ojos y te meten en un coche. No sabes dónde te están llevando. Tienes miedo."
     scene sala4
     show Collins Casual4
+    play music "audio/got.mp3"
     d" ¿Por qué no intentó escapar? Viendo cómo están las cosas… "
     menu:
         " Yo no he… Usted…":
@@ -426,97 +448,108 @@ label sala2:
             play sound click
             $ androide_confiado +=1
     show Collins Dudoso4
+    play music "audio/gotx2.mp3"
     d "Dejémonos de rodeos, ¿qué modelo eres?, ¿quién te ha fabricado?"
+    $ time = 10                                    ### set variable time to 3
+    $ timer_range = 10                             ### set variable timer_range to 3 (this is for purposes of showing a bar)
+    $ timer_call = 'respuestaRapida'               ### set where you want to jump once the timer runs out
+    show screen countdown                          ### call and start the timer
     menu:
 
         " (Llorando) ¿QUÉ? No, no… Yo no soy… ":
             play sound click
             $ humano_sospechoso -=1
             $ robot = False
+            hide screen countdown                  ### stop the timer
 
         "(Alterado) No soy un androide, mi nombre es [player_name], ya se lo dije.":
             play sound click
             $ humano_confiado +=1
             $ robot = False
+            hide screen countdown                  ### stop the timer
 
         "Soy el modelo AX483Z5G, mi creadora es la señora Emily Smith.":
             play sound click
             $ androide_sospechoso +=1
             $ robot = True
+            hide screen countdown                  ### stop the timer
             d "¿Qué tramais los androides?"
 
         "(Desafiante) Ya sabe mi nombre. ":
             play sound click
             $ androide_confiado +=1
             $ robot = False
+            hide screen countdown                  ### stop the timer
+
     if robot == False:
         d "¿Cómo lo haces para aparentar ser humano? ¿Te han enseñado o es algo que “surge” dentro de vosotros?"
+        $ time = 10                                    ### set variable time to 3
+        $ timer_range = 10                             ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_call = 'respuestaRapida'               ### set where you want to jump once the timer runs out
+        show screen countdown                          ### call and start the timer
         menu:
             "  (Llorando desconsoladamente) SOY un humano, no lo aparento, por favor, ¡sacadme de aquí!":
                 play sound click
                 $ humano_sospechoso -=1
+                hide screen countdown                  ### stop the timer
 
             "(Muy alterado) ¿Qué dices? no lo aparento, ¡lo soy!":
                 play sound click
                 $ humano_confiado +=1
+                hide screen countdown                  ### stop the timer
 
             "(Desafiante) No sé de qué me habla.":
                 play sound click
                 $ androide_confiado +=1
+                hide screen countdown                  ### stop the timer
 
         d " ¡Corta el rollo! ¿Qué es lo que estáis tramando?"
 
+
+    $ time = 10                                    ### set variable time to 3
+    $ timer_range = 10                             ### set variable timer_range to 3 (this is for purposes of showing a bar)
+    $ timer_call = 'respuestaRapida'               ### set where you want to jump once the timer runs out
+    show screen countdown                          ### call and start the timer
     menu:
         "(Hiperventilando y llorando) ¡No lo sé! ¡Por favor, dejadme salir de aquí! ¡AYUDAAAA!":
             play sound click
             $ humano_sospechoso -=1
             $ robot = False
+            hide screen countdown                  ### stop the timer
 
         "(Muy alterado) ¡No lo sé! ¡¿Cuántas veces tengo que decirte que no soy un androide?! ":
             play sound click
             $ humano_confiado +=1
             $ robot = False
+            hide screen countdown                  ### stop the timer
 
         "No tengo esa información en mi base de datos. ":
             play sound click
             $ androide_sospechoso +=1
             $ robot = True
-            d "¿Qué tramais los androides?"
+            hide screen countdown                  ### stop the timer
 
         "(Desafiante) No lo sé, pero viendo como los estáis tratando… Seguro que solo quieren igualdad.":
             play sound click
             $ androide_confiado -=1
             $ robot = False
+            hide screen countdown                  ### stop the timer
 
-label final:
+    stop music
+    d "Parece que te gustaría llevarte bien con la presidenta, ser su amiguito e ir cogiditos de la mano a matar humanos. Pues bien esto se acaba aquí."
+    d "Ya has demostrado lo que eres, aunque lo sabíamos desde hace tiempo, tu nombre no es NAME, es  AX483Z5G y puesto que tu lealtad cae con los androides, no me dejas más remedio…"
     scene black
-    if androide_confiado > 5 & personaje == False:
-        "Eres androide, te salvan porque les vas a dar información sobre los otros androides, traicionas a los tuyos para protegerte a ti mismo."
+    play sound "audio/gun.mp3"
+    pause 3
+    scene black
+    $ renpy.movie_cutscene("Credits.webm")
 
-    if androide_confiado > 5 & personaje == True:
-        "Eres humano, te matan aunque saben que no eres androide porque en realidad la existencia de los androides es mentira y es un complot para exterminar a gran parte de la humanidad."
+    return
 
-    if humano_sospechoso >5 &  personaje == False:
-        "Eres androide, te matan."
-
-    if humano_sospechoso >5 &  personaje == True:
-        "Eres un humano, lo haces fatal pareces un androide y te matan."
-
-    if humano_confiado >5 &  personaje == False:
-        "Eres androide, te salvas porque pareces un humano."
-
-    if humano_confiado >5 &  personaje == True:
-        "Eres un humano, te salvas."
-
-    if androide_confiado> 5 & personaje == False:
-        "Al final te descubrem pero te perdonan la vida."
-
-    if androide_confiado> 5 & personaje == True:
-        "Los androides se han alzado y estaban mirando si eres de los suyos."
-return
 
 
 label respuestaRapida:
     stop music
     play sound "audio/ring.mp3"
+    $ humano_sospechoso += 1
     d "Vaya estas tardando mucho en constestar no?"
