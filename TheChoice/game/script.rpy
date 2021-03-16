@@ -17,7 +17,7 @@ image casa = "sala2.png"
 image noticias = Movie(play="noticias.webm", size=(1920,1080),)
 define click = "audio/click.mp3"
 define d = Character("Collins")
-
+define p = Character("Policia")
 label pregunta_rapida:
         screen countdown:
             timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Call(timer_call)])
@@ -177,8 +177,6 @@ label sala1:
 
 
 label sala2:
-    hide sala1
-    scene black
     show noticias:
         xpos 0 ypos 0
     "Con el paso de los días las manifestaciones han crecido y se han ido violentando, las personas quieren respuestas y el gobierno no las da."
@@ -422,7 +420,7 @@ label sala2:
     show noticias:
         xpos 0 ypos 0
     "Por fin se ha conocido la identidad de los encapuchados, era un grupo de androides que pedían la igualdad y ser considerados humanos. "
-    "Gracias a las nuevas leyes propuestas por el nuevo presidente, elegido de manera muy democrática, los androides fueron apagados ayer, junto con los androides descubiertos entre los manifestantes de las protestas."
+    "Gracias a las nuevas leyes propuestas por el nuevo presidente, elegido de manera muy democrática, los androides fueron ejecutados ayer, junto con los androides descubiertos entre los manifestantes de las protestas."
     "Gracias a nuestro nuevo presidente, las calles y las personas vuelven a estar seguras."
     hide noticias
     show black
@@ -536,17 +534,51 @@ label sala2:
             hide screen countdown                  ### stop the timer
 
     stop music
-    d "Parece que te gustaría llevarte bien con la presidenta, ser su amiguito e ir cogiditos de la mano a matar humanos. Pues bien esto se acaba aquí."
-    d "Ya has demostrado lo que eres, aunque lo sabíamos desde hace tiempo, tu nombre no es NAME, es  AX483Z5G y puesto que tu lealtad cae con los androides, no me dejas más remedio…"
-    scene black
-    play sound "audio/gun.mp3"
+
+label final:
+    if androide_sospechoso>10 & personaje == False:
+        d "Parece que te gustaría llevarte bien con la presidenta, ser su amiguito e ir cogiditos de la mano a matar humanos. Pues bien esto se acaba aquí."
+        d "Ya has demostrado lo que eres, aunque lo sabíamos desde hace tiempo, tu nombre no es [player_name], es  AX483Z5G y puesto que tu lealtad cae con los androides, no me dejas más remedio…"
+        scene black
+        play sound "audio/gun.mp3"
+        pause 3
+    if humano_sospechoso>10 & personaje == True:
+        d"Puedes gritar todo lo que quieras, no vas a salir de aquí con vida, eres un puto robot, adiós."
+        scene black
+        play sound "audio/gun.mp3"
+        pause 3
+        p "Detective Collins espere!!"
+        p "Oh, vaya… ya es tarde."
+        d "¿Qué quiere, agente?"
+        p" Hemos contrastado toda la información obtenida y acabamos de descubrir su verdadera identidad, era una persona…"
+        d"Que?! Como?! Que he hecho..."
+    if androide_sospechoso == 16 & personaje == False:
+        d" ¿Sabes qué? está demasiado claro que eres un androide, joder, si tú mismo nos lo dijiste."
+        d "No supones ningún tipo de peligro para la sociedad ya que no se te confundiría con una persona ni estando ciego y sordo."
+        d "Te voy a liberar y sigue con tu miserable vida, eso sí, te tenemos fichado, como algún día te dé por desarrollar consciencia… ten por seguro que vendremos a por ti."
+    if humano_sospechoso>10 & personaje == False:
+        d "Grita todo lo que quieras, no saldrás de aquí con vida si yo no quiero. "
+        d "Te hemos descubierto, sabemos que eres un androide. Y no, no ha sido necesario un gran esfuerzo por nuestra parte, es que mientes de pena. "
+        d "Aun así, nos vendría bien alguien como tu, queremos que te infiltres entre los androides y nos proporciones todo tipo de información. "
+        d "No pongas esa cara, no tienes elección, o haces lo que te decimos o estás muerto."
+    if androide_sospechoso == 16 & personaje == True:
+        d "No se a quien pretendes engañar con tal actuación. Está claro que eres un humano, y uno tonto además."
+        d "No existe el modelo AX483Z5G, te podrías haber informado un poco antes de hacer la farsa. "
+        d " Desafortunadamente para ti, no te va a servir de nada ser humano, los androides nos hemos alzado, estamos colocados en puestos de poder y estamos acabando con los humanos. "
+        d "Sí, yo soy un androide y si no hubieras fingido ser un androide tan mal quizás te hubieras salvado… En fin, una lástima. Adiós. "
+        scene black
+        play sound "audio/gun.mp3"
+        pause 3
+label creditos:
+    show noticias:
+        xpos 0 ypos 0
+    "Los androides están prácticamente extinguidos, los que quedan son máquinas incapaces de desarrollar consciencia y los que la han desarrollado están acorralados, son minoría y sabemos cómo funcionan. "
+    "Las calles del país vuelven a estar seguras y libres de androides gracias a nuestro presidente."
     pause 3
     scene black
     $ renpy.movie_cutscene("Credits.webm")
 
-    return
-
-
+return
 
 label respuestaRapida:
     stop music
