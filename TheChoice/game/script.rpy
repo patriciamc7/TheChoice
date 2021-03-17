@@ -59,11 +59,11 @@ label start:
     "Las ramificaciones de este acontecimiento aún no están definidas."
 
     scene servicio
-    "Se han iniciado pequeñas manifestaciones en la ciudad debido a este descubrimiento"
+    "Se han iniciado pequeñas manifestaciones en la ciudad debido a este descubrimiento."
     " ¿Cómo ha llegado el androide a presidente?"
     scene manifestacion
     " ¿Quién lo puso ahí?"
-    " ¿Ha sido capaz de engañarnos a todos y que nadie se diera cuenta? o lo que es peor, ¿hay más como él?"
+    " ¿Ha sido capaz de engañarnos a todos y que nadie se diera cuenta? o lo que es peor, ¿hay más como ella?"
 
     scene tertulia
     "A causa de esto están surgiendo distintas corrientes de pensamiento sobre cómo juzgar lo ocurrido."
@@ -446,12 +446,12 @@ label sala2:
             play sound click
             $ androide_confiado +=1
     show Collins Dudoso4
-    play music "audio/gotx2.mp3"
     d "Dejémonos de rodeos, ¿qué modelo eres?, ¿quién te ha fabricado?"
     $ time = 10                                    ### set variable time to 3
     $ timer_range = 10                             ### set variable timer_range to 3 (this is for purposes of showing a bar)
     $ timer_call = 'respuestaRapida'               ### set where you want to jump once the timer runs out
-    show screen countdown                          ### call and start the timer
+    show screen countdown
+    play music "audio/gotx2.mp3"                       ### call and start the timer
     menu:
 
         " (Llorando) ¿QUÉ? No, no… Yo no soy… ":
@@ -551,17 +551,17 @@ label final:
         p "Oh, vaya… ya es tarde."
         d "¿Qué quiere, agente?"
         p" Hemos contrastado toda la información obtenida y acabamos de descubrir su verdadera identidad, era una persona…"
-        d"Que?! Como?! Que he hecho..."
-    if androide_sospechoso == 16 & personaje == False:
+        d"¿Que?! ¿Cómo?! Que he hecho..."
+    if androide_sospechoso == 14 & personaje == False:
         d" ¿Sabes qué? está demasiado claro que eres un androide, joder, si tú mismo nos lo dijiste."
         d "No supones ningún tipo de peligro para la sociedad ya que no se te confundiría con una persona ni estando ciego y sordo."
         d "Te voy a liberar y sigue con tu miserable vida, eso sí, te tenemos fichado, como algún día te dé por desarrollar consciencia… ten por seguro que vendremos a por ti."
     if  humano_sospechoso>androide_sospechoso &  humano_sospechoso>humano_confiado &  humano_sospechoso>androide_confiado & personaje == False:
-        d "Grita todo lo que quieras, no saldrás de aquí con vida si yo no quiero. "
-        d "Te hemos descubierto, sabemos que eres un androide. Y no, no ha sido necesario un gran esfuerzo por nuestra parte, es que mientes de pena. "
-        d "Aun así, nos vendría bien alguien como tu, queremos que te infiltres entre los androides y nos proporciones todo tipo de información. "
+        d "Grita todo lo que quieras, no saldrás de aquí con vida si yo no quiero."
+        d "Te hemos descubierto, sabemos que eres un androide. Y no, no ha sido necesario un gran esfuerzo por nuestra parte, es que mientes de pena."
+        d "Aun así, nos vendría bien alguien como tu, queremos que te infiltres entre los androides y nos proporciones todo tipo de información."
         d "No pongas esa cara, no tienes elección, o haces lo que te decimos o estás muerto."
-    if androide_sospechoso == 16 & personaje == True:
+    if androide_sospechoso == 14 & personaje == True:
         d "No se a quien pretendes engañar con tal actuación. Está claro que eres un humano, y uno tonto además."
         d "No existe el modelo AX483Z5G, te podrías haber informado un poco antes de hacer la farsa. "
         d " Desafortunadamente para ti, no te va a servir de nada ser humano, los androides nos hemos alzado, estamos colocados en puestos de poder y estamos acabando con los humanos. "
@@ -574,8 +574,8 @@ label creditos:
         xpos 0 ypos 0
     "Los androides están prácticamente extinguidos, los que quedan son máquinas incapaces de desarrollar consciencia y los que la han desarrollado están acorralados, son minoría y sabemos cómo funcionan. "
     "Las calles del país vuelven a estar seguras y libres de androides gracias a nuestro presidente."
-    pause 3
     scene black
+    pause 3
     $ renpy.movie_cutscene("Credits.webm")
 
 return
