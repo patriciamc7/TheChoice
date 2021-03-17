@@ -60,10 +60,10 @@ label start:
 
     scene servicio
     "Se han iniciado pequeñas manifestaciones en la ciudad debido a este descubrimiento"
-    " ¿cómo ha llegado el androide a presidente?"
+    " ¿Cómo ha llegado el androide a presidente?"
     scene manifestacion
-    " ¿quién lo puso ahí?"
-    " ¿ha sido capaz de engañarnos a todos y que nadie se diera cuenta? o lo que es peor, ¿hay más como él?"
+    " ¿Quién lo puso ahí?"
+    " ¿Ha sido capaz de engañarnos a todos y que nadie se diera cuenta? o lo que es peor, ¿hay más como él?"
 
     scene tertulia
     "A causa de esto están surgiendo distintas corrientes de pensamiento sobre cómo juzgar lo ocurrido."
@@ -79,7 +79,7 @@ label start:
             play sound click
             $ personaje = False
 
-    $ player_name = renpy.input("Estribe tu nombre")
+    $ player_name = renpy.input("Escribe tu nombre")
     $ player_name = player_name.strip()
     if player_name == "":
         $ player_name = "Alan Quim González"
@@ -536,13 +536,13 @@ label sala2:
     stop music
 
 label final:
-    if androide_sospechoso>10 & personaje == False:
+    if androide_confiado>androide_sospechoso &  androide_confiado>humano_confiado &  androide_confiado>humano_sospechoso & personaje == False:
         d "Parece que te gustaría llevarte bien con la presidenta, ser su amiguito e ir cogiditos de la mano a matar humanos. Pues bien esto se acaba aquí."
         d "Ya has demostrado lo que eres, aunque lo sabíamos desde hace tiempo, tu nombre no es [player_name], es  AX483Z5G y puesto que tu lealtad cae con los androides, no me dejas más remedio…"
         scene black
         play sound "audio/gun.mp3"
         pause 3
-    if humano_sospechoso>10 & personaje == True:
+    if humano_sospechoso>androide_sospechoso &  humano_sospechoso>humano_confiado &  humano_sospechoso>androide_confiado & personaje == True:
         d"Puedes gritar todo lo que quieras, no vas a salir de aquí con vida, eres un puto robot, adiós."
         scene black
         play sound "audio/gun.mp3"
@@ -556,7 +556,7 @@ label final:
         d" ¿Sabes qué? está demasiado claro que eres un androide, joder, si tú mismo nos lo dijiste."
         d "No supones ningún tipo de peligro para la sociedad ya que no se te confundiría con una persona ni estando ciego y sordo."
         d "Te voy a liberar y sigue con tu miserable vida, eso sí, te tenemos fichado, como algún día te dé por desarrollar consciencia… ten por seguro que vendremos a por ti."
-    if humano_sospechoso>10 & personaje == False:
+    if  humano_sospechoso>androide_sospechoso &  humano_sospechoso>humano_confiado &  humano_sospechoso>androide_confiado & personaje == False:
         d "Grita todo lo que quieras, no saldrás de aquí con vida si yo no quiero. "
         d "Te hemos descubierto, sabemos que eres un androide. Y no, no ha sido necesario un gran esfuerzo por nuestra parte, es que mientes de pena. "
         d "Aun así, nos vendría bien alguien como tu, queremos que te infiltres entre los androides y nos proporciones todo tipo de información. "
